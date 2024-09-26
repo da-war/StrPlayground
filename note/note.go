@@ -30,6 +30,13 @@ func (n Note) Print() string {
 	return fmt.Sprintf("Title: %s\nContent: %s\nCreated At: %s", n.Title, n.Content, n.CreateedAt)
 }
 
+func (n Note) SaveIt() {
+	fileName := strings.ReplaceAll(n.Title, " ", "_")
+	fileName = strings.ToLower(fileName)
+
+	os.WriteFile(fileName+".txt", []byte(n.Content), 0644)
+}
+
 //func to save note as a .json file
 
 func (note Note) SaveAsJSON() error {

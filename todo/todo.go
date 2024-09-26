@@ -35,5 +35,5 @@ func (todo Todo) SaveAsJSON() error {
 		return err
 	}
 
-	return os.WriteFile(fileName+".json", json, 0644)
+	return os.WriteFile(fileName, json, 0644)
 }

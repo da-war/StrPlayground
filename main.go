@@ -7,11 +7,18 @@ import (
 	"strings"
 
 	"dawar.com/note"
+	"dawar.com/todo"
 )
 
 func main() {
 	title := getUserInput("Note title: ")
 	content := getUserInput("Note content: ")
+	todoText := getUserInput("Todo text: ")
+
+	todo := todo.New(todoText)
+	todo.Print()
+
+	todo.SaveAsJSON()
 
 	if title == "" || content == "" {
 		fmt.Println("title and content are required")
