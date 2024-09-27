@@ -10,6 +10,10 @@ import (
 	"dawar.com/todo"
 )
 
+type saver interface {
+	Save() error
+}
+
 func main() {
 	title := getUserInput("Note title: ")
 	content := getUserInput("Note content: ")
@@ -17,8 +21,6 @@ func main() {
 
 	todo := todo.New(todoText)
 	todo.Print()
-
-	todo.SaveAsJSON()
 
 	if title == "" || content == "" {
 		fmt.Println("title and content are required")
@@ -30,14 +32,23 @@ func main() {
 	note := note.New(title, content)
 	data := note.Print()
 	fmt.Println(data)
-	err := note.SaveAsJSON()
-	if err != nil {
+	err := saveData(note)
+	secondErr := saveData(todo)
+	if err != nil || secondErr != nil {
 		fmt.Println("Error saving note")
 		os.Exit(1)
 	}
 
 	fmt.Println("Note saved successfully")
 
+}
+func saveData(data saver) error {
+	err := data.Save()
+	if err != nil {
+		return err
+	}
+	fmt.Println("Data saved successfully")
+	return nil
 }
 
 func getUserInput(prompt string) string {

@@ -39,7 +39,7 @@ func (n Note) SaveIt() {
 
 //func to save note as a .json file
 
-func (note Note) SaveAsJSON() error {
+func (note Note) Save() error {
 	fileName := strings.ReplaceAll(note.Title, " ", "_")
 	fileName = strings.ToLower(fileName)
 

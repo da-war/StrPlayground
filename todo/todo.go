@@ -26,7 +26,7 @@ func (todo Todo) Print() {
 
 //func to save note as a .json file
 
-func (todo Todo) SaveAsJSON() error {
+func (todo Todo) Save() error {
 	fileName := "todo.json"
 
 	json, err := json.MarshalIndent(todo, "", " ")
