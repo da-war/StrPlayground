@@ -67,14 +67,29 @@ func saveData(data saver) error {
 
 // second way
 func printAnyThing(data any) {
-	switch data.(type) {
-	case int:
-		fmt.Println("This is an integer")
-	case string:
-		fmt.Println("This is a string")
-	case float64:
-		fmt.Println("This is a float")
+	// switch data.(type) {
+	// case int:
+	// 	fmt.Println("This is an integer")
+	// case string:
+	// 	fmt.Println("This is a string")
+	// case float64:
+	// 	fmt.Println("This is a float")
+	// }
+	// typedValue, ok := data.(int)
+	// fmt.Println(typedValue, ok)
+	typedValue, ok := data.(string)
+	if ok {
+		fmt.Println("This is a string", typedValue)
 	}
+	typedValueInt, ok := data.(int)
+	if ok {
+		fmt.Println("This is an integer", typedValueInt)
+	}
+	typedValueFloat, ok := data.(float64)
+	if ok {
+		fmt.Println("This is a float", typedValueFloat)
+	}
+
 }
 
 func getUserInput(prompt string) string {
