@@ -15,6 +15,15 @@ type saver interface {
 }
 
 func main() {
+
+	number := 10
+	dawar := "Dawar"
+	floatNumber := 10.5
+
+	printAnyThing(number)
+	printAnyThing(dawar)
+	printAnyThing(floatNumber)
+
 	title := getUserInput("Note title: ")
 	content := getUserInput("Note content: ")
 	todoText := getUserInput("Todo text: ")
@@ -49,6 +58,16 @@ func saveData(data saver) error {
 	}
 	fmt.Println("Data saved successfully")
 	return nil
+}
+
+// first way
+// func printAnyThing(data interface{}) {
+// 	fmt.Println(data)
+// }
+
+// second way
+func printAnyThing(data any) {
+	fmt.Println(data)
 }
 
 func getUserInput(prompt string) string {
